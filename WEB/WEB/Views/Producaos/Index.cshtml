@@ -1,0 +1,51 @@
+﻿@model IEnumerable<BaseModel.Producao>
+
+@{
+    ViewBag.Title = "Lista de Produtos";
+}
+<h2>@ViewBag.Title</h2>
+
+ 
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model._Lote.LoteFerramenta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model._Maquina.Codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model._Produto.Codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataEntrada)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item._Lote.LoteFerramenta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item._Maquina.Codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item._Produto.Codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataEntrada)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ProducaoID }) |
+            @Html.ActionLink("Informações", "Details", new { id=item.ProducaoID }) |
+            @Html.ActionLink("Excluir", "Delete", new { id=item.ProducaoID })
+        </td>
+    </tr>
+}
+
+</table>
+<p>
+    @Html.ActionLink("Criar Novo", "Create", null, new { @class = "btn btn-success" })
+</p>

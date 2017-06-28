@@ -1,0 +1,58 @@
+﻿@model IEnumerable<BaseModel.Estoque>
+
+@{
+    ViewBag.Title = "Estoque de Ferramentas";
+}
+
+<h2>@ViewBag.Title</h2>
+
+ 
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model._Lote.LoteFerramenta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FerramentaNova)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FerramentaRemanufaturada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataEntrada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataSaida)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item._Lote.LoteFerramenta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FerramentaNova)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FerramentaRemanufaturada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataEntrada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataSaida)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.EstoqueID }) |
+            @Html.ActionLink("Informações", "Details", new { id=item.EstoqueID }) |
+            @Html.ActionLink("Excluir", "Delete", new { id=item.EstoqueID })
+        </td>
+    </tr>
+}
+
+</table>
+<p>
+    @Html.ActionLink("Novo Pedido", "Create", null, new { @class = "btn btn-success" })
+</p>

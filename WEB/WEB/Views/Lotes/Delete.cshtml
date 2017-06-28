@@ -1,0 +1,48 @@
+﻿@model BaseModel.Lote
+
+@{
+    ViewBag.Title = " ";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h3>Deseja excluir realmente?</h3>
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model._CriarLote.Lote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._CriarLote.Lote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._Ferramenta.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._Ferramenta.Codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoteFerramenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoteFerramenta)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Excluir" class="btn btn-default" /> |
+            @Html.ActionLink("Mostrar Lista de Lotes", "Index")
+        </div>
+    }
+</div>

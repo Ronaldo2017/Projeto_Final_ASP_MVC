@@ -1,0 +1,35 @@
+﻿@model IEnumerable<BaseModel.CriarLote>
+
+@{
+    ViewBag.Title = "Lista de Lotes";
+}
+
+
+<h2>@ViewBag.Title</h2>
+
+ 
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Lote)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lote)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.CriarLoteID }) |
+            @Html.ActionLink("Informações", "Details", new { id=item.CriarLoteID }) |
+            @Html.ActionLink("Excluir", "Delete", new { id=item.CriarLoteID })
+        </td>
+    </tr>
+}
+
+</table>
+<p>
+    @Html.ActionLink("Adicionar novo Lote", "Create", null, new { @class = "btn btn-success" })
+</p>

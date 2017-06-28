@@ -1,0 +1,31 @@
+﻿@model BaseModel.CriarLote
+
+@{
+    ViewBag.Title = " ";
+}
+
+<h2>@ViewBag.Title</h2>
+<h3>Deseja excluir realmente?</h3>
+<div>
+ 
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Lote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lote)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Excluir" class="btn btn-danger" /> |
+            @Html.ActionLink("Voltar para lista de Lotes", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<BaseModel.Maquina>
+
+@{
+    ViewBag.Title = "Lista de Máquinas";
+}
+<h2>@ViewBag.Title</h2>
+
+ 
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.MaquinaID }) |
+            @Html.ActionLink("Informações", "Details", new { id=item.MaquinaID }) |
+            @Html.ActionLink("Excluir", "Delete", new { id=item.MaquinaID })
+        </td>
+    </tr>
+}
+
+</table>
+<p>
+    @Html.ActionLink("Adicionar Máquina", "Create", null, new { @class = "btn btn-success" })
+</p>

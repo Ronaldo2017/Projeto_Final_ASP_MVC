@@ -1,0 +1,54 @@
+﻿@model IEnumerable<BaseModel.Manutencao>
+
+@{
+    ViewBag.Title = "Lista de Ferramentas para Manutenção";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model._Ferramenta.Codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustoManutencao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataEntrada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataSaida)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item._Ferramenta.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustoManutencao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataEntrada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataSaida)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.ManutencaoID }) |
+                @Html.ActionLink("Informações", "Details", new { id = item.ManutencaoID }) |
+                @Html.ActionLink("Excluir", "Delete", new { id = item.ManutencaoID })
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Criar Novo", "Create", null, new { @class = "btn btn-success" })
+</p>
+
