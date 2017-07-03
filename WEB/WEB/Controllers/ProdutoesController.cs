@@ -52,7 +52,7 @@ namespace WEB.Controllers
             {
                 try
                 {
-                    if (produto != null)
+                    if ((db.Produtos.FirstOrDefault(p => p.Codigo == produto.Codigo && p.Data == produto.Data) == null))
                     {
                         db.Produtos.Add(produto);
                         db.SaveChanges();
@@ -106,12 +106,12 @@ namespace WEB.Controllers
 
                     db.Entry(produto).State = EntityState.Modified;
                     db.SaveChanges();
-                    TempData["Mensagem"] = "Produto Editado com Sucesso!";
-                    return RedirectToAction("Create");
+                    TempData["Mensagem"] = "Produto alterado com Sucesso!";
+                    return RedirectToAction("Index");
                 }
                 catch (Exception e)
                 {
-                    TempData["Mensagem"] = "Erro ao editar o produto!";
+                    TempData["Mensagem"] = "Erro na alteração do produto!";
                     return View(produto);
                 }
 
@@ -146,7 +146,7 @@ namespace WEB.Controllers
                 db.Produtos.Remove(produto);
                 db.SaveChanges();
                 TempData["Mensagem"] = "Produto Excluído com sucesso!";
-                return RedirectToAction("Create");
+                return RedirectToAction("Index");
             }
             catch (Exception e)
             {

@@ -51,7 +51,7 @@ namespace WEB.Controllers
             {
                 try
                 {
-                    if (ferramenta != null)
+                    if ((db.Ferramentas.FirstOrDefault(f => f.Codigo == ferramenta.Codigo && f.Descricao == ferramenta.Descricao && f.Data == ferramenta.Data) == null))
                     {
                         db.Ferramentas.Add(ferramenta);
                         db.SaveChanges();
@@ -102,11 +102,11 @@ namespace WEB.Controllers
                 {
                     db.Entry(ferramenta).State = EntityState.Modified;
                     db.SaveChanges();
-                    TempData["Mensagem"] = "Ferramenta Editada com Sucesso!";
+                    TempData["Mensagem"] = "Ferramenta alterada com Sucesso!";
                     return RedirectToAction("Index");
                 }catch(Exception e)
                 {
-                    TempData["Mensagem"] = "Erro ao editar a ferramenta!";
+                    TempData["Mensagem"] = "Erro na alteração da ferramenta!";
                     return View(ferramenta);
                 }
             }

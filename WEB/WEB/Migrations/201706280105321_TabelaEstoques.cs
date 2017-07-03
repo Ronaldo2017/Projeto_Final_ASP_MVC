@@ -1,6 +1,6 @@
 namespace WEB.Migrations
 {
-    using System;
+    
     using System.Data.Entity.Migrations;
     
     public partial class TabelaEstoques : DbMigration
@@ -13,8 +13,8 @@ namespace WEB.Migrations
                     {
                         EstoqueID = c.Int(nullable: false, identity: true),
                         LoteID = c.Int(nullable: false),
-                        FerramentaNova = c.Boolean(nullable: false),
-                        FerramentaRemanufaturada = c.Boolean(nullable: false),
+                        //FerramentaNova = c.Boolean(nullable: false),
+                        //FerramentaRemanufaturada = c.Boolean(nullable: false),
                         DataEntrada = c.DateTime(nullable: false),
                         DataSaida = c.DateTime(nullable: false),
                     })

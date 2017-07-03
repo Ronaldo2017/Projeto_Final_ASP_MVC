@@ -54,7 +54,7 @@ namespace WEB.Controllers
             {
                 try
                 {
-                    if(producao != null)
+                    if((db.Producaos.FirstOrDefault(p => p.DataEntrada == producao.DataEntrada) ==  null))
                     {
                         db.Producaos.Add(producao);
                         db.SaveChanges();
@@ -63,7 +63,7 @@ namespace WEB.Controllers
                     }
                     else
                     {
-                        TempData["Mensagem"] = "Produtos já Cadastrado !";
+                        TempData["Mensagem"] = "Produtos já Cadastrados !";
                         return View(producao);
                     }
                 }
@@ -117,7 +117,7 @@ namespace WEB.Controllers
                 }
                 catch (Exception e)
                 {
-                    TempData["Mensagem"] = "Erro ao editar o Lote!";
+                    TempData["Mensagem"] = "Erro na alteração do Lote!";
                     return View(producao);
                 }
                 

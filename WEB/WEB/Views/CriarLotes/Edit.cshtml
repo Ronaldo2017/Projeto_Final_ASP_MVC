@@ -10,9 +10,9 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-     
+        
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.CriarLoteID)
@@ -27,14 +27,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Salvar Alterações" class="btn btn-success" />
+                <input type="submit" value="Salvar Alterações" class="btn btn-primary" />
             </div>
         </div>
     </div>
 }
 
 <div>
-   @Html.ActionLink("Voltar para lista de Lotes", "Index")
+    @Html.ActionLink("Voltar para lista de Lotes", "Index")
 </div>
 
 @section Scripts {

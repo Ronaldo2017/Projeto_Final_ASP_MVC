@@ -52,22 +52,22 @@ namespace WEB.Controllers
             {
                 try
                 {
-                    if(manutencao != null)
+                    if((db.Manutencaos.FirstOrDefault(m => m.CustoManutencao == manutencao.CustoManutencao && m._Ferramenta == manutencao._Ferramenta && m.DataEntrada == manutencao.DataEntrada && m.DataSaida == manutencao.DataSaida) == null))
                     {
                         db.Manutencaos.Add(manutencao);
                         db.SaveChanges();
-                        TempData["Mensagem"] = "Manutenção Cadastrada com Sucesso!";
+                        TempData["Mensagem"] = "Cadastrado realizado com Sucesso!";
                         return RedirectToAction("Create");
                     }
                     else
                     {
-                        TempData["Mensagem"] = "Manutenção já Cadastrada !";
+                        TempData["Mensagem"] = "Produto já Cadastrado!";
                         return View(manutencao);
                     }
                     
                 }catch(Exception e)
                 {
-                    TempData["Mensagem"] = "Erro ao cadastrar a manutenção!";
+                    TempData["Mensagem"] = "Erro ao cadastrar o produto!";
                     return View(manutencao);
                 }
                  
@@ -106,11 +106,11 @@ namespace WEB.Controllers
                 {
                     db.Entry(manutencao).State = EntityState.Modified;
                     db.SaveChanges();
-                    TempData["Mensagem"] = "Manutenção Editada com Sucesso!";
+                    TempData["Mensagem"] = "Produto Editada com Sucesso!";
                     return RedirectToAction("Index");
                 }catch(Exception e)
                 {
-                    TempData["Mensagem"] = "Manutenção Editada com Sucesso!";
+                    TempData["Mensagem"] = "Erro ao editar o produto!";
                     return View(manutencao);
                 }
              
@@ -144,11 +144,11 @@ namespace WEB.Controllers
                 Manutencao manutencao = db.Manutencaos.Find(id);
                 db.Manutencaos.Remove(manutencao);
                 db.SaveChanges();
-                TempData["Mensagem"] = "Manutenção Excluída com sucesso!";
+                TempData["Mensagem"] = "Produto Excluído com sucesso!";
                 return RedirectToAction("Index");
             }catch(Exception e)
             {
-                TempData["Mensagem"] = "Manutenção Excluída com sucesso!";
+                TempData["Mensagem"] = "Erro ao excluir o produto!";
                 return View();
             }
           

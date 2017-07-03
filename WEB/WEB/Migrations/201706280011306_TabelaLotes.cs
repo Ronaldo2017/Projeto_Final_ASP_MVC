@@ -12,7 +12,7 @@ namespace WEB.Migrations
                 c => new
                     {
                         LoteID = c.Int(nullable: false, identity: true),
-                        LoteFerramenta = c.String(nullable: false),
+                        //LoteFerramenta = c.String(nullable: false),
                         FerramentaID = c.Int(nullable: false),
                         CriarLoteID = c.Int(nullable: false),
                     })

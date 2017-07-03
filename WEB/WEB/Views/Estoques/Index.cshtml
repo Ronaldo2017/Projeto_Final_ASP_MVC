@@ -13,11 +13,9 @@
             @Html.DisplayNameFor(model => model._Lote.LoteFerramenta)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FerramentaNova)
+            @Html.DisplayNameFor(model => model._Situacao)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FerramentaRemanufaturada)
-        </th>
+         
         <th>
             @Html.DisplayNameFor(model => model.DataEntrada)
         </th>
@@ -33,11 +31,8 @@
             @Html.DisplayFor(modelItem => item._Lote.LoteFerramenta)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.FerramentaNova)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FerramentaRemanufaturada)
-        </td>
+            @Html.DisplayFor(modelItem => item._Situacao)
+        </td>        
         <td>
             @Html.DisplayFor(modelItem => item.DataEntrada)
         </td>
@@ -54,5 +49,5 @@
 
 </table>
 <p>
-    @Html.ActionLink("Novo Pedido", "Create", null, new { @class = "btn btn-success" })
+    @Html.ActionLink("Novo Pedido", "Create", null, new { @class = "btn btn-primary" })
 </p>

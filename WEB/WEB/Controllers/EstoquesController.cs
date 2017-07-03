@@ -46,29 +46,24 @@ namespace WEB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EstoqueID,LoteID,FerramentaNova,FerramentaRemanufaturada,DataEntrada,DataSaida")] Estoque estoque)
+        public ActionResult Create([Bind(Include = "EstoqueID,LoteID,Situação,DataEntrada,DataSaida")] Estoque estoque)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    if(estoque != null)
-                    {
-                        db.Estoques.Add(estoque);
-                        db.SaveChanges();
-                        TempData["Mensagem"] = "Cadastrado com sucesso!";
-                        return RedirectToAction("Create");
-                    }
-                    else
-                    {
-                        TempData["Mensagem"] = "Produto já cadastrado!";
-                    }
-                }catch(Exception e)
+                    db.Estoques.Add(estoque);
+                    db.SaveChanges();
+                    TempData["Mensagem"] = "Cadastrado com sucesso!";
+                    return RedirectToAction("Create");
+
+                }
+                catch (Exception e)
                 {
                     TempData["Mensagem"] = "Erro ao cadastrar!";
                     return View(estoque);
                 }
-               
+
             }
 
             ViewBag.LoteID = new SelectList(db.Lotes, "LoteID", "LoteFerramenta", estoque.LoteID);
@@ -96,7 +91,7 @@ namespace WEB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EstoqueID,LoteID,FerramentaNova,FerramentaRemanufaturada,DataEntrada,DataSaida")] Estoque estoque)
+        public ActionResult Edit([Bind(Include = "EstoqueID,LoteID,Situação,DataEntrada,DataSaida")] Estoque estoque)
         {
             if (ModelState.IsValid)
             {
@@ -104,14 +99,15 @@ namespace WEB.Controllers
                 {
                     db.Entry(estoque).State = EntityState.Modified;
                     db.SaveChanges();
-                    TempData["Mensagem"] = "Produto Editado com Sucesso!";
+                    TempData["Mensagem"] = "Produto alterado com Sucesso!";
                     return RedirectToAction("Index");
-                }catch(Exception e)
+                }
+                catch (Exception e)
                 {
-                    TempData["Mensagem"] = "Erro ao editar o Produto!";
+                    TempData["Mensagem"] = "Erro na alteração do Produto!";
                     return View(estoque);
                 }
-               
+
             }
             ViewBag.LoteID = new SelectList(db.Lotes, "LoteID", "LoteFerramenta", estoque.LoteID);
             return View(estoque);
@@ -143,7 +139,7 @@ namespace WEB.Controllers
                 db.Estoques.Remove(estoque);
                 db.SaveChanges();
                 TempData["Mensagem"] = "Produto Excluído com sucesso!";
-                return RedirectToAction("Create");
+                return RedirectToAction("Index");
             }
             catch (Exception e)
             {

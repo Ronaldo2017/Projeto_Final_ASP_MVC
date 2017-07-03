@@ -1,4 +1,4 @@
-﻿@model BaseModel.Estoque
+﻿@model  BaseModel.Estoque
 
 @{
     ViewBag.Title = "Cadastrar produto no Estoque";
@@ -8,49 +8,45 @@
 <h2>@ViewBag.Title</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        @if (TempData["Mensagem"] != null)
-        {
-            <div class="alert alert-success alert-dismissable">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong></strong>@TempData["Mensagem"]
-            </div>
-        }
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.LoteID, "LoteID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("LoteID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.LoteID, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    @*//radio button
+    <div>
+        @Html.RadioButtonFor(model => model._Situacao, 0) &nbsp; &nbsp;@Html.Label("Nova")
+        @Html.RadioButtonFor(model => model._Situacao, 1)@Html.Label("Remanufatura")
+    </div>*@
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.FerramentaNova, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.FerramentaNova)
-                    @Html.ValidationMessageFor(model => model.FerramentaNova, "", new { @class = "text-danger" })
+  
+        @Html.AntiForgeryToken()
+        <div style="margin:20px 0 20px 0">
+
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.LoteID, "Lote", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("LoteID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.LoteID, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.FerramentaRemanufaturada, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.FerramentaRemanufaturada)
-                    @Html.ValidationMessageFor(model => model.FerramentaRemanufaturada, "", new { @class = "text-danger" })
+
+ 
+
+    //caixa de opção
+        <div  style="margin:70px 0 20px 0">
+                @Html.LabelFor(model => model._Situacao, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @*<div class="checkbox">*@
+                        @Html.EnumDropDownListFor(model => model._Situacao, null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model._Situacao, "", new { @class = "text-danger" })
+                    @*</div>*@
                 </div>
             </div>
-        </div>
+       
 
-        <div class="form-group">
+        <div style="margin:118px 0 20px 0">
             @Html.LabelFor(model => model.DataEntrada, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DataEntrada, new { htmlAttributes = new { @class = "form-control" } })
@@ -58,7 +54,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div style="margin:168px 0 20px 0">
             @Html.LabelFor(model => model.DataSaida, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DataSaida, new { htmlAttributes = new { @class = "form-control" } })
@@ -66,12 +62,12 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div style="margin:220px 0 20px 0">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Novo" class="btn btn-success" />
+                <input type="submit" value="Novo" class="btn btn-primary" />
             </div>
         </div>
-    </div>
+
 }
 
 <div>

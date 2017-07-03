@@ -50,11 +50,11 @@ namespace WEB.Controllers
             {
                 try
                 {
-                    if (maquina != null)
+                    if ((db.Maquinas.FirstOrDefault(m => m.Codigo == maquina.Codigo && maquina.Descricao == m.Descricao && m.Data == maquina.Data) ==  null))
                     {
                         db.Maquinas.Add(maquina);
                         db.SaveChanges();
-                        TempData["Mensagem"] = "Máquina salva com sucesso!";
+                        TempData["Mensagem"] = "Máquina cadastrada com sucesso!";
                         return RedirectToAction("Create");
                     }
                     else
@@ -102,12 +102,12 @@ namespace WEB.Controllers
                 {
                     db.Entry(maquina).State = EntityState.Modified;
                     db.SaveChanges();
-                    TempData["Mensagem"] = "Máquina Editada com sucesso!";
-                    return RedirectToAction("Edit");
+                    TempData["Mensagem"] = "Máquina alterada com sucesso!";
+                    return RedirectToAction("Index");
                 }
                 catch (Exception e)
                 {
-                    TempData["Mensagem"] = "Error ao Editar!";
+                    TempData["Mensagem"] = "Error na alteração da máquina!";
                     return View(maquina);
                 }
             }
@@ -140,7 +140,7 @@ namespace WEB.Controllers
                 db.Maquinas.Remove(maquina);
                 db.SaveChanges();
                 TempData["Mensagem"] = "Máquina Excluída com sucesso!";
-                return RedirectToAction("Delete");
+                return RedirectToAction("Index");
             }catch(Exception e)
             {
                 TempData["Mensagem"] = "Erro ao Excluir a máquina!";

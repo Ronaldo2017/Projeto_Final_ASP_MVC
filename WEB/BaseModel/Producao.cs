@@ -12,6 +12,7 @@ namespace BaseModel
 
         [Display(Name = "Data de Empréstimo")]
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DataEntrada { get; set; }
 
         public int LoteID { get; set; }

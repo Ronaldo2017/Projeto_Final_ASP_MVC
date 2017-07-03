@@ -50,23 +50,26 @@ namespace WEB.Controllers
             {
                 try
                 {
-                    if (criarLote != null)
+
+                    if ((db.CriarLotes.FirstOrDefault(l => l.Lote == criarLote.Lote) == null))
                     {
                         db.CriarLotes.Add(criarLote);
                         db.SaveChanges();
                         TempData["Mensagem"] = "Lote Cadastrado com Sucesso!";
                         return RedirectToAction("Create");
-                    }else
+                    }
+                    else
                     {
                         TempData["Mensagem"] = "Lote já Cadastrado !";
                         return View(criarLote);
                     }
-                }catch(Exception e)
+                }
+                catch (Exception e)
                 {
-                    TempData["Mensagem"] = "Erro ao cadastrar a ferramenta!";
+                    TempData["Mensagem"] = "Erro ao cadastrar o Lote!";
                     return View(criarLote);
                 }
-            
+
             }
 
             return View(criarLote);
@@ -100,14 +103,15 @@ namespace WEB.Controllers
                 {
                     db.Entry(criarLote).State = EntityState.Modified;
                     db.SaveChanges();
-                    TempData["Mensagem"] = "Lote Editado com Sucesso!";
+                    TempData["Mensagem"] = "Lote alterado com Sucesso!";
                     return RedirectToAction("Index");
-                }catch(Exception e)
+                }
+                catch (Exception e)
                 {
-                    TempData["Mensagem"] = "Erro ao editar o Lote!";
+                    TempData["Mensagem"] = "Erro na alteração do Lote!";
                     return View(criarLote);
                 }
-               
+
             }
             return View(criarLote);
         }

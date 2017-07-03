@@ -9,7 +9,7 @@ namespace BaseModel
         [Key]
         public int LoteID { get; set; }
 
-        [Display(Name ="Lote Ferramenta")]
+        [Display(Name = "Lote Ferramenta")]
         [Required(ErrorMessage = "Campo Obrigatório!")]
         public string LoteFerramenta { get; set; }
 

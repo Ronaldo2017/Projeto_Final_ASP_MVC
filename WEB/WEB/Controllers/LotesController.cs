@@ -68,7 +68,7 @@ namespace WEB.Controllers
                 }
                 catch (Exception e)
                 {
-                    TempData["Mensagem"] = "Erro ao cadastrar a ferramenta!";
+                    TempData["Mensagem"] = "Erro ao cadastrar o lote!";
                     return View(lote);
                 }
             }
@@ -108,12 +108,12 @@ namespace WEB.Controllers
                 {
                     db.Entry(lote).State = EntityState.Modified;
                     db.SaveChanges();
-                    TempData["Mensagem"] = "Lote Editado com Sucesso!";
+                    TempData["Mensagem"] = "Lote alterado com Sucesso!";
                     return RedirectToAction("Index");
                 }
                 catch (Exception e)
                 {
-                    TempData["Mensagem"] = "Erro ao editar o Lote!";
+                    TempData["Mensagem"] = "Erro para na alteração do Lote!";
                     return View(lote);
                 }
 
