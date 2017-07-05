@@ -41,8 +41,9 @@ namespace BaseModel
 
         public enum SituacaoFerramenta
         {
-            Nova,
-            Remanufaturada
+
+            Nova ,
+            Remanufaturada 
         }
 
     }

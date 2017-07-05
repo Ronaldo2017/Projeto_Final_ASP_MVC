@@ -259,6 +259,11 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Image\4660f4b5-1974-4cd4-a366-8dfa8e3bfba5.png" />
+    <Content Include="Content\Image\conduspar-logo.jpg" />
+    <Content Include="Content\Image\ferramenta1.jpg" />
+    <Content Include="Content\Image\ferramenta2.jpg" />
+    <Content Include="Content\Image\ferramenta3.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
